@@ -1,0 +1,76 @@
+// Move all negative numbers to beginning and positive to end with constant extra space
+// An array contains both positive and negative numbers in random order. Rearrange the array elements so that all negative numbers appear before all positive numbers.
+
+// Examples : 
+
+// Input: -12, 11, -13, -5, 6, -7, 5, -3, -6
+// Output: -12 -13 -5 -7 -3 -6 11 6 5
+
+/********************************************************************/
+//  Approach
+
+//  We will use two pointer to partion the whole array into two parts
+//  Firstly we will initialize low and high to 0
+
+//  Check the value of arr[i], iterates i from 0 to n-1
+//  if arr[i]<0, swap arr[low] and arr[high], low++ and high++
+//  if arr[i]>0, high++
+//  do these steps until the last element of the array
+
+/********************************************************************/
+
+//  Code
+
+#include<iostream>
+using namespace std;
+
+void swap(int arr[], int i, int j){
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+class Solution
+{
+    public:
+    void rearrange(int a[], int n)
+    {
+        int low = 0, high = 0;
+        for(int i=0;i<n;i++){
+            if(a[i] < 0){
+                swap(a,low,high);
+                high++;low++;
+            }
+            else{
+                high++;
+            }
+        }
+    }
+    
+};
+
+int main(){
+    int t;
+    cin >> t;
+
+    while(t--){
+        int n;
+        cin >>n;
+        int a[n];
+        for(int i=0;i<n;i++){
+            cin >> a[i];
+        }
+
+        Solution ob;
+        ob.rearrange(a, n);
+
+        for(int i=0;i<n;i++){
+            cout << a[i]  << " ";
+        }
+
+        cout << endl;
+        
+        
+    }
+    return 0;
+}

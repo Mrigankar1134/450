@@ -1,0 +1,48 @@
+// { Driver Code Starts
+//Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+// { Driver Code Starts.
+
+int main() {
+	
+	int t;
+	cin >> t;
+	
+	while(t--){
+	    //  Intersection
+	    int n, m;
+	    cin >> n >> m;
+	    int a[n], b[m];
+	    unordered_map<int,int> map1;
+	    unordered_map<int,int> map2;
+	    for(int i = 0;i<n;i++){
+	       cin >> a[i];
+	       map1[a[i]]++;
+	    }
+	       
+	    for(int i = 0;i<m;i++){
+	       cin >> b[i];
+	       map2[b[i]]++;
+	    }
+	    int i=0,j=0,count=0;
+	    while(i<map1.size() && j<map2.size()){
+	        if(map1[i]==map2[j]){
+	            count++;i++;j++;
+	        }
+            else if(map1[i]<map2[j]){
+                i++;
+            }
+            else{
+                j++;
+            }
+	    }
+	    cout<<count;
+	}
+	
+	return 0;
+}  // } Driver Code Ends
